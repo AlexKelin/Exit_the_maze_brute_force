@@ -3,18 +3,16 @@ import sys
 
 sys.setrecursionlimit(10000)
 
-
-def store_matrix():
-    list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    return list
-fff
-
 the_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
                24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
 counting_main = []
 limit_for_decrease = [0, 10, 20, 30]
 limit_for_add = [9, 19, 29]
+
+
+def store_matrix():
+    return [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 
 def the_counting_list(number):
@@ -62,7 +60,7 @@ def base_check(matrix):
     def find_exit_1(the_list):
         print(f'Step: {the_list[-1]}')
         # print(f'Visit log: {n}')
-        if the_list[-1] == 29 or the_list[-1] == 38 or the_list[-1] == 39:
+        if the_list[-1] in [29, 38, 39]:
             print('')
             print('Path Found!\n')
             print(f'Matrix modified: {len(counting_main)} times')
@@ -80,13 +78,21 @@ def base_check(matrix):
             print('↓')
             n.append((the_list[-1] + 10))
             find_exit_1(n)
-        elif the_list[-1] - 10 > 0 and matrix[(the_list[-1] - 10)] == 0 and the_list[-1] - 10 not in n:
+        elif (
+            the_list[-1] > 10
+            and matrix[(the_list[-1] - 10)] == 0
+            and the_list[-1] - 10 not in n
+        ):
             # print(f'What came in INDEX: {the_list[-1]}')
             print('↑')
             n.append((the_list[-1] - 10))
             find_exit_1(n)
-        elif the_list[-1] - 1 > 0 and matrix[(the_list[-1] - 1)] == 0 and the_list[-1] - 1 not in n and \
-                the_list[-1] not in limit_for_decrease:
+        elif (
+            the_list[-1] > 1
+            and matrix[(the_list[-1] - 1)] == 0
+            and the_list[-1] - 1 not in n
+            and the_list[-1] not in limit_for_decrease
+        ):
             print('<-')
             n.append((the_list[-1] - 1))
             find_exit_1(n)
@@ -99,7 +105,7 @@ def base_check(matrix):
 
     def find_exit_2(the_list_2):
         print(f'Step: {the_list_2[-1]}')
-        if the_list_2[-1] == 29 or the_list_2[-1] == 38 or the_list_2[-1] == 39:
+        if the_list_2[-1] in [29, 38, 39]:
             print('')
             print('Path Found!\n')
             print(f'Matrix modified: {len(counting_main)} times')
@@ -110,7 +116,11 @@ def base_check(matrix):
             print('↓')
             n.append((the_list_2[-1] + 10))
             find_exit_2(n)
-        elif the_list_2[-1] - 10 > 0 and matrix[(the_list_2[-1] - 10)] == 0 and the_list_2[-1] - 10 not in n:
+        elif (
+            the_list_2[-1] > 10
+            and matrix[(the_list_2[-1] - 10)] == 0
+            and the_list_2[-1] - 10 not in n
+        ):
             print('↑')
             n.append((the_list_2[-1] - 10))
             find_exit_2(n)
@@ -119,8 +129,12 @@ def base_check(matrix):
             print('->')
             n.append((the_list_2[-1] + 1))
             find_exit_2(n)
-        elif the_list_2[-1] - 1 > 0 and matrix[(the_list_2[-1] - 1)] == 0 and the_list_2[-1] - 1 not in n and \
-                the_list_2[-1] not in limit_for_decrease:
+        elif (
+            the_list_2[-1] > 1
+            and matrix[(the_list_2[-1] - 1)] == 0
+            and the_list_2[-1] - 1 not in n
+            and the_list_2[-1] not in limit_for_decrease
+        ):
             # print(f'What came in INDEX: {the_list_2[-1]}')
             print('<-')
             n.append((the_list_2[-1] - 1))
@@ -134,14 +148,18 @@ def base_check(matrix):
 
     def find_exit_3(the_list_3):
         print(f'Step: {the_list_3[-1]}')
-        if the_list_3[-1] == 29 or the_list_3[-1] == 38 or the_list_3[-1] == 39:
+        if the_list_3[-1] in [29, 38, 39]:
             print('')
             print('Path Found!\n')
             print(f'Matrix modified: {len(counting_main)} times')
             print(f'Distance to exit: {len(n)}')
             print(f'The path to exit: {n}')
             exit()
-        elif the_list_3[-1] - 10 > 0 and matrix[(the_list_3[-1] - 10)] == 0 and the_list_3[-1] - 10 not in n:
+        elif (
+            the_list_3[-1] > 10
+            and matrix[(the_list_3[-1] - 10)] == 0
+            and the_list_3[-1] - 10 not in n
+        ):
             print('↑')
             n.append((the_list_3[-1] - 10))
             find_exit_3(n)
@@ -154,8 +172,12 @@ def base_check(matrix):
             print('↓')
             n.append((the_list_3[-1] + 10))
             find_exit_3(n)
-        elif the_list_3[-1] - 1 > 0 and matrix[(the_list_3[-1] - 1)] == 0 and the_list_3[-1] - 1 not in n and \
-                the_list_3[-1] not in limit_for_decrease:
+        elif (
+            the_list_3[-1] > 1
+            and matrix[(the_list_3[-1] - 1)] == 0
+            and the_list_3[-1] - 1 not in n
+            and the_list_3[-1] not in limit_for_decrease
+        ):
             # print(f'What came in INDEX: {the_list_2[-1]}')
             print('<-')
             n.append((the_list_3[-1] - 1))
@@ -169,7 +191,7 @@ def base_check(matrix):
 
     def find_exit_4(the_list_4):
         print(f'Step: {the_list_4[-1]}')
-        if the_list_4[-1] == 29 or the_list_4[-1] == 38 or the_list_4[-1] == 39:
+        if the_list_4[-1] in [29, 38, 39]:
             print('')
             print('Path Found!\n')
             print(f'Matrix modified: {len(counting_main)} times')
@@ -185,12 +207,20 @@ def base_check(matrix):
             print('->')
             n.append((the_list_4[-1] + 1))
             find_exit_4(n)
-        elif the_list_4[-1] - 10 > 0 and matrix[(the_list_4[-1] - 10)] == 0 and the_list_4[-1] - 10 not in n:
+        elif (
+            the_list_4[-1] > 10
+            and matrix[(the_list_4[-1] - 10)] == 0
+            and the_list_4[-1] - 10 not in n
+        ):
             print('↑')
             n.append((the_list_4[-1] - 10))
             find_exit_4(n)
-        elif the_list_4[-1] - 1 > 0 and matrix[(the_list_4[-1] - 1)] == 0 and the_list_4[-1] - 1 not in n and \
-                the_list_4[-1] not in limit_for_decrease:
+        elif (
+            the_list_4[-1] > 1
+            and matrix[(the_list_4[-1] - 1)] == 0
+            and the_list_4[-1] - 1 not in n
+            and the_list_4[-1] not in limit_for_decrease
+        ):
             print('<-')
             n.append((the_list_4[-1] - 1))
             find_exit_4(n)
@@ -203,14 +233,18 @@ def base_check(matrix):
 
     def find_exit_5(the_list_5):
         print(f'Step: {the_list_5[-1]}')
-        if the_list_5[-1] == 29 or the_list_5[-1] == 38 or the_list_5[-1] == 39:
+        if the_list_5[-1] in [29, 38, 39]:
             print('')
             print('Path Found!\n')
             print(f'Matrix modified: {len(counting_main)} times')
             print(f'Distance to exit: {len(n)}')
             print(f'The path to exit: {n}')
             exit()
-        elif the_list_5[-1] - 10 > 0 and matrix[(the_list_5[-1] - 10)] == 0 and the_list_5[-1] - 10 not in n:
+        elif (
+            the_list_5[-1] > 10
+            and matrix[(the_list_5[-1] - 10)] == 0
+            and the_list_5[-1] - 10 not in n
+        ):
             print('↑')
             n.append((the_list_5[-1] - 10))
             find_exit_5(n)
@@ -223,8 +257,12 @@ def base_check(matrix):
             print('↓')
             n.append((the_list_5[-1] + 10))
             find_exit_5(n)
-        elif the_list_5[-1] - 1 > 0 and matrix[(the_list_5[-1] - 1)] == 0 and the_list_5[-1] - 1 not in n and \
-                the_list_5[-1] not in limit_for_decrease:
+        elif (
+            the_list_5[-1] > 1
+            and matrix[(the_list_5[-1] - 1)] == 0
+            and the_list_5[-1] - 1 not in n
+            and the_list_5[-1] not in limit_for_decrease
+        ):
             # print(f'What came in INDEX: {the_list_2[-1]}')
             print('<-')
             n.append((the_list_5[-1] - 1))
@@ -238,7 +276,7 @@ def base_check(matrix):
 
     def find_exit_6(the_list_6):
         print(f'Step: {the_list_6[-1]}')
-        if the_list_6[-1] == 29 or the_list_6[-1] == 38 or the_list_6[-1] == 39:
+        if the_list_6[-1] in [29, 38, 39]:
             print('')
             print('Path Found!\n')
             print(f'Matrix modified: {len(counting_main)} times')
@@ -250,7 +288,11 @@ def base_check(matrix):
             print('->')
             n.append((the_list_6[-1] + 1))
             find_exit_6(n)
-        elif the_list_6[-1] - 10 > 0 and matrix[(the_list_6[-1] - 10)] == 0 and the_list_6[-1] - 10 not in n:
+        elif (
+            the_list_6[-1] > 10
+            and matrix[(the_list_6[-1] - 10)] == 0
+            and the_list_6[-1] - 10 not in n
+        ):
             print('↑')
             n.append((the_list_6[-1] - 10))
             find_exit_6(n)
@@ -258,8 +300,12 @@ def base_check(matrix):
             print('↓')
             n.append((the_list_6[-1] + 10))
             find_exit_6(n)
-        elif the_list_6[-1] - 1 > 0 and matrix[(the_list_6[-1] - 1)] == 0 and the_list_6[-1] - 1 not in n and \
-                the_list_6[-1] not in limit_for_decrease:
+        elif (
+            the_list_6[-1] > 1
+            and matrix[(the_list_6[-1] - 1)] == 0
+            and the_list_6[-1] - 1 not in n
+            and the_list_6[-1] not in limit_for_decrease
+        ):
             # print(f'What came in INDEX: {the_list_2[-1]}')
             print('<-')
             n.append((the_list_6[-1] - 1))
@@ -282,3 +328,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
