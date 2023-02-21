@@ -1,4 +1,4 @@
-Matrix Traversal: Finding the path to the exit
+**Matrix Traversal: Finding the path to the exit**
 
 This code uses recursive algorithms to find the path to the exit of a 4x10 matrix. The starting and endpoint are the top left and bottom right corners, respectively.
 
